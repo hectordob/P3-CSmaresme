@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/indice.css') }}"/>
+    <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="#">Informacion</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Intercambios</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+    </head>
+</head>
+<body>
+<div id="contenedor">
+            <div id="central">
+                <div id="login">
+                    <div class="titulo">
+                        Bienvenido
+                    </div>
+                    <form id="loginform">
+                        <input type="text" name="usuario" placeholder="Usuario" required>
+
+                        <input type="password" placeholder="Contraseña" name="password" required>
+
+                        <button type="submit" title="Ingresar" name="Ingresar">Login</button>
+                    </form>
+                    <div class="pie-form">
+                        <a href="#">¿Perdiste tu contraseña?</a>
+                        <a href="/register">¿No tienes Cuenta? Registrate</a>
+                    </div>
+                </div>
+                <div class="inferior">
+                    <a href="#">Volver</a>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

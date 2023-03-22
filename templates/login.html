@@ -18,19 +18,35 @@
     </head>
 </head>
 <body>
+    {% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
 <div id="contenedor">
             <div id="central">
                 <div id="login">
                     <div class="titulo">
                         Bienvenido
                     </div>
-                    <form id="loginform">
-                        <input type="text" name="usuario" placeholder="Usuario" required>
-
-                        <input type="password" placeholder="Contraseña" name="password" required>
-
-                        <button type="submit" title="Ingresar" name="Ingresar">Login</button>
-                    </form>
+                    <form method="POST" action="{{ url_for('login') }}">
+  <h1 class="a11y-hidden">Login Form</h1>
+   <div>
+    <label class="username">
+      <input type="text" class="text" name="usuario" placeholder="usuario" id="usuario" required />
+      <span class="required">usuario</span>
+    </label>
+  </div>
+  <div>
+    <label class="label-password">
+      <input type="password" class="text" name="password" placeholder="Password" id="password" required />
+      <span class="required">Password</span>
+    </label>
+      <button type="submit">login</button>
+  </div>
+</form>
                     <div class="pie-form">
                         <a href="#">¿Perdiste tu contraseña?</a>
                         <a href="/register">¿No tienes Cuenta? Registrate</a>

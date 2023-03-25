@@ -1,7 +1,6 @@
 from flask import *
 import funcionesbbdd
 from functools import wraps
-import sqlite3
 
 app = Flask(__name__)
 
@@ -23,18 +22,17 @@ def login_required(f):
     @wraps(f)
     def check_token(*args, **kwargs):
         if 'logged' not in session:
-            flash('Es necesario loguearse')
+            flash('Es necesario iniciar sesión')
             return redirect(url_for('login'))
         return f(*args, **kwargs)
 
     return check_token
 
 
-@app.route('/')
+@app.route('/home')
 def get_admin():
     if 'admin' in session:
         return render_template('admin.html')
-
     if 'logged' in session:
         return render_template('home.html')
     else:
@@ -42,14 +40,14 @@ def get_admin():
 
 
 @app.route('/')
-def index():  # put application's code here
-    return render_template('login.html')
+def index():
+    return render_template('index.html')
 
 
 @app.route('/home')
 @login_required
 def home():
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 @app.route('/admin')
@@ -76,11 +74,10 @@ def create_user():
     return redirect(url_for('login'))
 
 
-@app.route('/login/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
         return render_template('login.html')
-
     else:
         usuario = request.form['usuario']
         password = request.form['password']
@@ -88,10 +85,10 @@ def login():
 
         if check == 'admin':
             session['logged'] = 'hdffddsdaihlcutdcilñcretckjdfhvcb'
-        session['admin'] = 'yes'
-        return redirect(url_for('admin'))
+            session['admin'] = 'yes'
+            return redirect(url_for('admin'))
 
-        if check == True:
+        elif check == True:
             session['logged'] = 'hdffddsdaihlcutdcilñcretckjdfhvcb'
             return redirect(url_for('home'))
         else:

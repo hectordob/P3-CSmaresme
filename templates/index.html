@@ -6,32 +6,12 @@
 
 {% block content %}
 
-    <header>
-        <nav>
-            <ul>
-                <li><img src="/static/images/logo_csdm.jpg"></li>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="#">Información</a></li>
-                <li><a href="#">Vídeos</a></li>
-                <li><a href="login">Comparte tus lecturas</a></li>
-                <li><a href="/contacto">Contacto</a></li>
-                 <button> <a href="{{ url_for ('logout') }}" class="button error">Logout</a></button>
-            </ul>
-        </nav>
-    </header>
-</head>
-<body>
-<br>
-<div style="margin-left:100px">
-    <h1>INFORMACION</h1>
-    <br>
-    <h3>APRENDE MIENTRAS ESPERAS</h3>
-    <p>Comparte tus lecturas</p>
-    <p href="">--> Quiero unirme</p>
-    <br>
-    <p>Escucha explicaciones de las enfermadades y tratamientos</p>
-    <br>
-    <p>Mira videos sobre El cuerpo humano</p>
-</div>
-</body>
-</html>
+    <div class="sin-bordes">
+        <img src="/static/images/index.jpg">
+    </div>
+
+
+{% endblock %}
+
+
+

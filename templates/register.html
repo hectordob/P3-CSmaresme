@@ -1,57 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>register</title>
-    <meta name="viewport">
-    <head>
-        <script src="https://hcaptcha.com/1/api.js" async defer></script>
-        <script>
-            function onSubmit(token) {
-                document.getElementById("register-form").submit();
-            }
-        </script>
-    </head>
-<body>
-<h1>Registro</h1>
-<form action="/register" method="POST">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required><br><br>
+{% extends 'base.html' %}
 
-    <label for="apellido1">Apellido 1:</label>
-    <input type="text" id="apellido1" name="apellido1" required><br><br>
+{% block title %}
+    Registre d'usuari nou
+{% endblock %}
 
-    <label for="apellido2">Apellido 2:</label>
-    <input type="text" id="apellido2" name="apellido2"><br><br>
+{% block content %}
 
-    <label for="nacimiento">Fecha de nacimiento:</label>
-    <input type="date" id="nacimiento" name="nacimiento"><br><br>
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("register-form").submit();
+        }
+    </script>
 
-    <label for="email">Correo electrónico:</label>
-    <input type="email" id="email" name="email" required><br><br>
 
-    <label for="telefono">Teléfono:</label>
-    <input type="tel" id="telefono" name="telefono"><br><br>
+    <br>
+    <br>
+    <div id="contenedor">
+        <div id="central-register">
+            <div id="login">
+                <div class="titulo">
+                    Registre d'usuari nou
+                </div>
 
-    <label for="usuario">Usuario:</label>
-    <input type="text" id="usuario" name="usuario" required><br><br>
+                <div>
+                    <form action="/register" method="POST">
+                        <br>
+                        <label for="nombre" class="field-title">Nom</label>
+                        <input type="text" id="nombre" name="nombre" required>
 
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" required><br><br>
+                        <label for="apellido1" class="field-title">Primer cognom</label>
+                        <input type="text" id="apellido1" name="apellido1" required>
 
-    <label class="rol">
-        <input type="text" class="text" name="rol" readonly placeholder="user" id="rol" value="user" required/>
-        <span class="required">rol</span>
-    </label>
+                        <label for="apellido2" class="field-title">Segon cognom</label>
+                        <input type="text" id="apellido2" name="apellido2">
 
-    <form id="register-form" action="procesar_registro.php" method="POST">
-        <!-- Agrega los campos del formulario aquí -->
-        <div class="h-captcha" data-sitekey="c18204ec-4b75-438a-82bb-4930f89ee91d" data-callback="onSubmit"></div>
-        <br>
-        <button type="submit">Registrarse</button>
-    </form>
+                        <label for="nacimiento" class="field-title">Data de naixement</label>
+                        <input type="date" id="nacimiento" name="nacimiento">
 
-    <button type="submit">Registrarse</button>
-</form>
-</body>
-</html>
+                        <label for="email" class="field-title">Correu electrònic</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="telefono" class="field-title">Telèfon</label>
+                        <input type="tel" id="telefono" name="telefono">
+
+                        <label for="usuario" class="field-title">Nom d'usuari</label>
+                        <input type="text" id="usuario" name="usuario" required>
+
+                        <label for="password" class="field-title">Contrasenya</label>
+                        <input type="password" id="password" name="password" required>
+
+
+                        <form id="register-form" action="procesar_registro.php" method="POST">
+                            <!-- Agrega los campos del formulario aquí -->
+                            <div class="h-captcha" data-sitekey="c18204ec-4b75-438a-82bb-4930f89ee91d" data-callback="onSubmit"></div>
+                            <br>
+                            <button type="submit">Registrarse</button>
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

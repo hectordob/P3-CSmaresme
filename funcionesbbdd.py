@@ -2,11 +2,10 @@ import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-def insert_user(nombre, apellido1, apellido2, nacimiento, email, telefono, usuario, password, rol):
+def insert_user(nombre, apellido1, apellido2, nacimiento, email, telefono, usuario, password):
     conn = sqlite3.connect('maresme.sqlite')
-    sql = '''insert into usuarios(nombre,apellido1,apellido2,fecha_nac,email,telefono,usuario, password,rol) values (?,?,?,?,?,?,?,?,?)'''
-    rol = 'user'
-    values = [nombre, apellido1, apellido2, nacimiento, email, telefono, usuario, generate_password_hash(password), rol]
+    sql = '''insert into usuarios(nombre,apellido1,apellido2,fecha_nac,email,telefono,usuario, password) values (?,?,?,?,?,?,?,?)'''
+    values = [nombre, apellido1, apellido2, nacimiento, email, telefono, usuario, generate_password_hash(password)]
     conn.execute(sql, values)
     conn.commit()
     conn.close()

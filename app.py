@@ -68,9 +68,7 @@ def create_user():
         telefono = request.form['telefono']
         usuario = request.form['usuario']
         password = request.form['password']
-        rol = request.form['rol']
-        password = request.form['password']
-        funcionesbbdd.insert_user(nombre, apellido1, apellido2, nacimiento, email, telefono, usuario, password, rol)
+        funcionesbbdd.insert_user(nombre, apellido1, apellido2, nacimiento, email, telefono, usuario, password)
     return redirect(url_for('login'))
 
 
@@ -93,6 +91,14 @@ def login():
             return redirect(url_for('home'))
         else:
             return redirect(url_for('login'))
+
+
+
+@app.route('/articulos')
+def articulos():
+    return render_template('articulos.html')
+
+
 
 
 if __name__ == '__main__':

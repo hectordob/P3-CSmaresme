@@ -1,61 +1,50 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/indice.css') }}"/>
-    <header>
-            <nav>
-                <ul>
-                    <li><a href="/">Inicio</a></li>
-                    <li><a href="#">Informacion</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Intercambios</a></li>
-                    <li><a href="/contacto">Contacto</a></li>
-                </ul>
-            </nav>
-        </header>
-    </head>
-</head>
-<body>
-    {% with messages = get_flashed_messages() %}
-   {% if messages %}
-      {% for message in messages %}
-         {{ message }}
-      {% endfor %}
-   {% endif %}
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
 {% endwith %}
-<div id="contenedor">
-            <div id="central">
-                <div id="login">
-                    <div class="titulo">
-                        Bienvenido
-                    </div>
-                    <form method="POST" action="{{ url_for('login') }}">
-  <h1 class="a11y-hidden">Login Form</h1>
-   <div>
-    <label class="username">
-      <input type="text" class="text" name="usuario" placeholder="usuario" id="usuario" required />
-      <span class="required">usuario</span>
-    </label>
-  </div>
-  <div>
-    <label class="label-password">
-      <input type="password" class="text" name="password" placeholder="Password" id="password" required />
-      <span class="required">Password</span>
-    </label>
-      <button type="submit">login</button>
-  </div>
-</form>
-                    <div class="pie-form">
-                        <a href="#">¿Perdiste tu contraseña?</a>
-                        <a href="/register">¿No tienes Cuenta? Registrate</a>
-                    </div>
+    <br>
+    <br>
+    <div id="contenedor">
+        <div id="central-login">
+            <div id="login">
+                <div class="titulo">
+                    Llegir i compartir
                 </div>
-                <div class="inferior">
-                    <a href="#">Volver</a>
+                <form method="POST" action="{{ url_for('login') }}">
+                    <br>
+                    <label class="field-title">Usuari</label>
+                    <input type="text" name="usuario" placeholder="nom d'usuari" id="usuario" required/>
+
+                    <label class="field-title">Contrasenya</label>
+                    <input type="password" name="password" placeholder="contrasenya" id="password" required/>
+
+                    <div class="flex-links">
+                    <a href="#">Restablir<br>contrasenya</a>
+                    <button type="submit">Envia</button>
+                    </div>
+                </form>
+                <div class="pie-form">
+                    Encara no tens usuari? <a href="/register">Registra't!</a>
                 </div>
             </div>
         </div>
-</body>
-</html>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base_home.html' %}
+
+{% block title %}
+    Articulos
+{% endblock %}
+    
+{% block content %}
+<table class="table table-dark table-striped">
+    <a href="{{ url_for('crear_articulo') }}"><button>PUBLICAR UNA LECTURA</button></a>
+    <thead>
+        <th>titulo</th>
+        <th>autor</th>
+        <th>editorial</th>
+        <th>fecha_publicacion</th>
+        <th>categoria</th>
+        <th>edad minima</th>
+        <th>descripción</th>
+        <th>portada</th>
+        <th>OPCIONES</th>
+    </thead>
+    <tbody>
+    {% for articulo in datos %}
+        <tr>
+            <td><a href="{{url_for('mostrar_articulo', idarticulo=articulo.idarticulo)}}">{{ articulo.titulo }}</a></td>
+            <td>{{ articulo.autor }}</td>
+            <td>{{ articulo.editorial }}</td>
+            <td>{{ articulo.year }}</td>
+            <td>{{ articulo.categoria }}</td>
+            <td>{{ articulo.edad_min }}</td>
+            <td>{{ articulo.descripcion }}</td>
+            <td><img src="{{ articulo.imagen1 }}" alt='imagen no disponible'></td>
+            <td>
+                {%if articulo.disponible == 1 and articulo.idarticulo not in idsarticulos%}
+                <a href="{{url_for('crear_prestamo', idarticulo=articulo.idarticulo)}}" onclick="return confirm(Confirmar que quieres prestarte {{articulo.titulo}}')">>
+                    <button type="submit">QUIERO ESTA LECTURA</button>
+                </a>
+                {%endif%}
+
+                {%if articulo.idarticulo in idsarticulos%}
+                <a href="{{ url_for('actualizar_articulo', idarticulo=articulo.idarticulo) }}">
+                    <button type="submit">ACTUALIZAR PUBLICACIÓN</button>
+                </a>
+                {%endif%}
+
+                {%if articulo.idarticulo in idsarticulos%}
+                <a href="{{url_for('borrar_articulo', idarticulo=articulo.idarticulo)}}">
+                    <button type="submit">BORRAR PUBLICACIÓN</button>
+                </a>
+                {%endif%}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

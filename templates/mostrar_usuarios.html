@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Registre d'usuari nou
+{% endblock %}
+
+{% block content %}
+
+    <br>
+    <br>
+    <div id="contenedor">
+        <div id="central-register">
+            <div id="login">
+                <div class="titulo">
+                    Registre d'usuari nou
+                </div>
+
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Primer apellido</th>
+                                <th>Segundo apellido</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>Email</th>
+                                <th>Numero de telefono</th>
+                                <th>Nombre de usuario</th>
+                                <th>Contraseña</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{usuario.nombre}}</td>
+                                <td>{{usuario.nombre}}</td>
+                                <td>{{usuario.nombre}}</td>
+                                <td>{{usuario.nombre}}</td>
+                                <td>{{usuario.nombre}}</td>
+                                <td>{{usuario.nombre}}</td>
+                            </tr>>
+                        </tbody>
+
+                        <form id="register-form" action="procesar_registro.php" method="POST">
+                            <!-- Agrega los campos del formulario aquí -->
+                            <div class="h-captcha" data-sitekey="c18204ec-4b75-438a-82bb-4930f89ee91d" data-callback="onSubmit"></div>
+                            <br>
+                            <button type="submit">Registrarse</button>
+                        </form>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
